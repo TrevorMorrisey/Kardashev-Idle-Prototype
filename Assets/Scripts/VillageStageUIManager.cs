@@ -17,6 +17,21 @@ public class VillageStageUIManager : MonoBehaviour
     public BuildingUI farmUI;
     public BuildingUI workshopUI;
 
+    private void Start()
+    {
+        UpdateBuildingUI(settlementUI, villageStageManager.settlementData);
+        UpdateBuildingUI(horseMillUI, villageStageManager.horseMillData);
+        UpdateBuildingUI(waterMillUI, villageStageManager.waterMillData);
+        UpdateBuildingUI(farmUI, villageStageManager.farmData);
+        UpdateBuildingUI(workshopUI, villageStageManager.workshopData);
+    }
+
+    private void Update()
+    {
+        UpdatePowerText(GameManager.instace.currentPower);
+        UpdateMaterialsText(GameManager.instace.currentMaterials);
+    }
+
     public void UpdatePowerText(int power)
     {
         powerText.text = "Power: " + power;
@@ -34,9 +49,9 @@ public class VillageStageUIManager : MonoBehaviour
 
     public void UpdateBuildingUI(BuildingUI buildingUI, BuildingData buildingData)
     {
-        //farmCountText.text = "Farm Count: " + villageStageManager.farmCount + "/5";
-        //farmIncomeText.text = "Farm Income: " + villageStageManager.farmCount;
-        //farmCostText.text = "Farm Cost: " + (villageStageManager.farmCount + 1) * 10;
+        buildingUI.SetCount(buildingData.count, buildingData.capacity);
+        buildingUI.SetIncome(buildingData.income, buildingData.power, buildingData.power == 0);
+        buildingUI.SetCost(buildingData.currentCost);
     }
 
 }

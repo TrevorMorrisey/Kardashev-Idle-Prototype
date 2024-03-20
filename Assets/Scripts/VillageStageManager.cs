@@ -65,6 +65,11 @@ public class VillageStageManager : MonoBehaviour
         availableRiverSpawnLocations.Add(new Vector2Int(0, 0));
     }
 
+    private void Update()
+    {
+        CheckUnlocks();
+    }
+
     private void GenerateRiver()
     {
         int straightSegmentDistance = 3; // Expected to be odd
@@ -117,19 +122,19 @@ public class VillageStageManager : MonoBehaviour
             UIManager.EnableBuildingUI(UIManager.workshopUI);
         }
 
-        if (!settlementUnlocked && GameManager.instace.currentMaterials >= 200 && farmData.count >= 10)
+        if (!settlementUnlocked && farmData.count >= 10)
         {
             settlementUnlocked = true;
             UIManager.EnableBuildingUI(UIManager.settlementUI);
         }
 
-        if (!horseMillsUnlocked && GameManager.instace.currentMaterials >= 1000 && settlementData.count >= 5)
+        if (!horseMillsUnlocked && settlementData.count >= 5)
         {
             horseMillsUnlocked = true;
             UIManager.EnableBuildingUI(UIManager.horseMillUI);
         }
 
-        if (!waterMillsUnlocked && GameManager.instace.currentMaterials >= 10000 && horseMillData.count >= 5)
+        if (!waterMillsUnlocked && horseMillData.count >= 5)
         {
             waterMillsUnlocked = true;
             UIManager.EnableBuildingUI(UIManager.waterMillUI);
@@ -138,36 +143,98 @@ public class VillageStageManager : MonoBehaviour
 
     public void PerformLabor()
     {
-        GameManager.instace.currentMaterials += 5;
-        UIManager.UpdateMaterialsText(GameManager.instace.currentMaterials);
+        GameManager.instace.currentMaterials += 5000;
+        //UIManager.UpdateMaterialsText(GameManager.instace.currentMaterials);
 
-        CheckUnlocks();
+        //CheckUnlocks();
     }
 
-    public void BuyFarm()
+    public void ClickPurchaseBuilding(string buildingName)
     {
-        if (GameManager.instace.currentMaterials >= farmData.currentCost)
+        if (buildingName == "Farm")
         {
-            SpawnFarm();
-            GameManager.instace.currentMaterials -= farmData.currentCost;
-
-            // Update farm data
-            farmData.count++;
-            farmData.currentCost += farmData.costScaling * farmData.count;
-
-            // Update income in GameManager
-            GameManager.instace.currentIncome += farmData.income;
-
-            UIManager.UpdateBuildingUI(UIManager.farmUI, farmData);
-            CheckUnlocks();
+            PurchaseBuilding(buildingName, farmData, UIManager.farmUI);
+        }
+        else if (buildingName == "Workshop")
+        {
+            PurchaseBuilding(buildingName, workshopData, UIManager.workshopUI);
+        }
+        else if (buildingName == "Settlement")
+        {
+            PurchaseBuilding(buildingName, settlementData, UIManager.settlementUI);
+        }
+        else if (buildingName == "Horse Mill")
+        {
+            PurchaseBuilding(buildingName, horseMillData, UIManager.horseMillUI);
+        }
+        else if (buildingName == "Water Mill")
+        {
+            PurchaseBuilding(buildingName, waterMillData, UIManager.waterMillUI);
         }
     }
 
-    private void SpawnFarm()
+    public void PurchaseBuilding(string buildingName, BuildingData buildingData, BuildingUI buildingUI)
     {
-        Vector2Int spawnLocation = availableLandSpawnLocations[Random.Range(0, availableLandSpawnLocations.Count)];
-        availableLandSpawnLocations.Remove(spawnLocation);
-        Instantiate(farmPrefab, new Vector3(spawnLocation.x, 0, spawnLocation.y), Quaternion.identity, buildingParent);
+        if (GameManager.instace.currentMaterials >= buildingData.currentCost)
+        {
+            SpawnBuilding(buildingName);
+            GameManager.instace.currentMaterials -= buildingData.currentCost;
+
+            // Update farm data
+            buildingData.count++;
+            buildingData.currentCost += buildingData.costScaling * buildingData.count;
+
+            // Update income and power in GameManager
+            GameManager.instace.currentIncome += buildingData.income;
+            GameManager.instace.currentPower += buildingData.power;
+
+            UIManager.UpdateBuildingUI(buildingUI, buildingData);
+            //CheckUnlocks();
+        }
+    }
+
+    private void SpawnBuilding(string buildingName)
+    {
+        // TODO: Handle water mill behavior
+        Vector2Int spawnLocation; // = availableLandSpawnLocations[Random.Range(0, availableLandSpawnLocations.Count)];
+        //availableLandSpawnLocations.Remove(spawnLocation);
+        if (buildingName != "Water Mill")
+        {
+            spawnLocation = availableLandSpawnLocations[Random.Range(0, availableLandSpawnLocations.Count)];
+            availableLandSpawnLocations.Remove(spawnLocation);
+        }
+        else
+        {
+            spawnLocation = availableRiverSpawnLocations[Random.Range(0, availableRiverSpawnLocations.Count)];
+            availableRiverSpawnLocations.Remove(spawnLocation);
+        }
+        
+        if (buildingName == "Farm")
+        {
+            Instantiate(farmPrefab, new Vector3(spawnLocation.x, 0, spawnLocation.y), Quaternion.identity, buildingParent);
+        }
+        else if (buildingName == "Workshop")
+        {
+            Instantiate(workshopPrefab, new Vector3(spawnLocation.x, 0, spawnLocation.y), Quaternion.identity, buildingParent);
+        }
+        else if (buildingName == "Settlement")
+        {
+            Instantiate(settlementPrefab, new Vector3(spawnLocation.x, 0, spawnLocation.y), Quaternion.identity, buildingParent);
+        }
+        else if (buildingName == "Horse Mill")
+        {
+            Instantiate(horseMillPrefab, new Vector3(spawnLocation.x, 0, spawnLocation.y), Quaternion.identity, buildingParent);
+        }
+        else if (buildingName == "Water Mill")
+        {
+            Transform mill = Instantiate(waterMillPrefab, new Vector3(spawnLocation.x, 0, spawnLocation.y), Quaternion.identity, buildingParent).transform;
+
+            // If tile to the left of water mill is not a river, rotate water mill 180 degrees
+            if (!tiles.ContainsKey(new Vector2Int(spawnLocation.x - 1, spawnLocation.y)) || !tiles[new Vector2Int(spawnLocation.x - 1, spawnLocation.y)].isRiver)
+            {
+                mill.Rotate(new Vector3(0, 180, 0));
+            }
+        }
 
         List<Vector2Int> adjacentTiles = new List<Vector2Int>
         {

@@ -22,7 +22,7 @@ public class BuildingUI : MonoBehaviour
         }
     }
 
-    public void SetIncome(int income, bool isMaterials)
+    public void SetIncome(int income, int power, bool isMaterials)
     {
         if (isMaterials)
         {
@@ -30,7 +30,7 @@ public class BuildingUI : MonoBehaviour
         }
         else
         {
-            incomeText.text = income + " power";
+            incomeText.text = power + " power";
         }
     }
 
