@@ -8,8 +8,15 @@ public class VillageStageManager : MonoBehaviour
     public Transform cameraTransform;
 
     public Transform buildingParent;
-    public GameObject farmPrefab;
+
+    // Power building prefabs
     public GameObject settlementPrefab;
+    public GameObject horseMillPrefab;
+    public GameObject waterMillPrefab;
+
+    // Material building prefabs
+    public GameObject farmPrefab;
+    public GameObject workshopPrefab;
 
     public Transform riverParent;
     public GameObject riverTilePrefab;
@@ -18,7 +25,19 @@ public class VillageStageManager : MonoBehaviour
     private List<Vector2Int> availableLandSpawnLocations = new List<Vector2Int>();
     private List<Vector2Int> availableRiverSpawnLocations = new List<Vector2Int>();
 
-    [HideInInspector] public int farmCount;
+    public BuildingData farmData;
+    public BuildingData workshopData;
+
+    public BuildingData settlementData;
+    public BuildingData horseMillData;
+    public BuildingData waterMillData;
+
+    private bool farmsUnlocked = false;
+    private bool workshopsUnlocked = false;
+
+    private bool settlementUnlocked = false;
+    private bool horseMillsUnlocked = false;
+    private bool waterMillsUnlocked = false;
 
     private void Start()
     {
@@ -86,9 +105,34 @@ public class VillageStageManager : MonoBehaviour
 
     private void CheckUnlocks() // This should probably be in a separate class
     {
-        if (GameManager.instace.currentMaterials >= 50) // Should only be checked until it has been unlocked
+        if (!farmsUnlocked && GameManager.instace.currentMaterials >= 50) // Should only be checked until it has been unlocked
         {
-            UIManager.EnableFarmUI();
+            farmsUnlocked = true;
+            UIManager.EnableBuildingUI(UIManager.farmUI);
+        }
+
+        if (!workshopsUnlocked && GameManager.instace.currentMaterials >= 250)
+        {
+            workshopsUnlocked = true;
+            UIManager.EnableBuildingUI(UIManager.workshopUI);
+        }
+
+        if (!settlementUnlocked && GameManager.instace.currentMaterials >= 200 && farmData.count >= 10)
+        {
+            settlementUnlocked = true;
+            UIManager.EnableBuildingUI(UIManager.settlementUI);
+        }
+
+        if (!horseMillsUnlocked && GameManager.instace.currentMaterials >= 1000 && settlementData.count >= 5)
+        {
+            horseMillsUnlocked = true;
+            UIManager.EnableBuildingUI(UIManager.horseMillUI);
+        }
+
+        if (!waterMillsUnlocked && GameManager.instace.currentMaterials >= 10000 && horseMillData.count >= 5)
+        {
+            waterMillsUnlocked = true;
+            UIManager.EnableBuildingUI(UIManager.waterMillUI);
         }
     }
 
@@ -102,10 +146,20 @@ public class VillageStageManager : MonoBehaviour
 
     public void BuyFarm()
     {
-        if (GameManager.instace.currentMaterials >= 50)
+        if (GameManager.instace.currentMaterials >= farmData.currentCost)
         {
             SpawnFarm();
-            GameManager.instace.currentMaterials -= 50;
+            GameManager.instace.currentMaterials -= farmData.currentCost;
+
+            // Update farm data
+            farmData.count++;
+            farmData.currentCost += farmData.costScaling * farmData.count;
+
+            // Update income in GameManager
+            GameManager.instace.currentIncome += farmData.income;
+
+            UIManager.UpdateBuildingUI(UIManager.farmUI, farmData);
+            CheckUnlocks();
         }
     }
 

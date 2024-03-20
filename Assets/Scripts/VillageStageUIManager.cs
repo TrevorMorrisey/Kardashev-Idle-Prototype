@@ -10,10 +10,12 @@ public class VillageStageUIManager : MonoBehaviour
     public TMP_Text powerText;
     public TMP_Text materialsText;
 
-    public GameObject farmUI;
-    public TMP_Text farmCountText;
-    public TMP_Text farmIncomeText;
-    public TMP_Text farmCostText;
+    public BuildingUI settlementUI;
+    public BuildingUI horseMillUI;
+    public BuildingUI waterMillUI;
+
+    public BuildingUI farmUI;
+    public BuildingUI workshopUI;
 
     public void UpdatePowerText(int power)
     {
@@ -25,15 +27,15 @@ public class VillageStageUIManager : MonoBehaviour
         materialsText.text = "Materials: " + materials;
     }
 
-    public void EnableFarmUI()
+    public void EnableBuildingUI(BuildingUI buildingUI)
     {
-        farmUI.SetActive(true);
+        buildingUI.gameObject.SetActive(true);
     }
 
-    public void UpdateFarmUI()
+    public void UpdateBuildingUI(BuildingUI buildingUI, BuildingData buildingData)
     {
-        farmCountText.text = "Farm Count: " + villageStageManager.farmCount + "/5";
-        farmIncomeText.text = "Farm Income: " + villageStageManager.farmCount;
+        //farmCountText.text = "Farm Count: " + villageStageManager.farmCount + "/5";
+        //farmIncomeText.text = "Farm Income: " + villageStageManager.farmCount;
         //farmCostText.text = "Farm Cost: " + (villageStageManager.farmCount + 1) * 10;
     }
 

@@ -532,6 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7180236373441257428}
+  - component: {fileID: 6142792856412752934}
   m_Layer: 5
   m_Name: Building
   m_TagString: Untagged
@@ -561,3 +562,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -155}
   m_SizeDelta: {x: 0, y: -310}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6142792856412752934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5130142022999650855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fa7be0305cd674e9a4669aa4647934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countText: {fileID: 1305893765821497075}
+  incomeText: {fileID: 7217597700489711816}
+  costText: {fileID: 1050914744452720591}

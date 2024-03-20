@@ -146,6 +146,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+        type: 3}
+      propertyPath: buildingName
+      value: Settlement
+      objectReference: {fileID: 0}
     - target: {fileID: 7180236373441257428, guid: 70f89c1be67d480479cee66f250c233e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -262,6 +267,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 105225431}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &105225433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+    type: 3}
+  m_PrefabInstance: {fileID: 105225431}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fa7be0305cd674e9a4669aa4647934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &184202457
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,6 +503,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+        type: 3}
+      propertyPath: buildingName
+      value: Workshop
+      objectReference: {fileID: 0}
     - target: {fileID: 7180236373441257428, guid: 70f89c1be67d480479cee66f250c233e,
         type: 3}
       propertyPath: m_Pivot.x
@@ -597,6 +619,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 236501710}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &236501712 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+    type: 3}
+  m_PrefabInstance: {fileID: 236501710}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fa7be0305cd674e9a4669aa4647934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &308722792
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +685,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+        type: 3}
+      propertyPath: buildingName
+      value: Horse Mill
       objectReference: {fileID: 0}
     - target: {fileID: 7180236373441257428, guid: 70f89c1be67d480479cee66f250c233e,
         type: 3}
@@ -768,6 +807,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 359552488}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &359552490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+    type: 3}
+  m_PrefabInstance: {fileID: 359552488}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fa7be0305cd674e9a4669aa4647934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &368660539
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,14 +883,59 @@ MonoBehaviour:
   UIManager: {fileID: 392042680}
   cameraTransform: {fileID: 1275157703}
   buildingParent: {fileID: 308722793}
+  settlementPrefab: {fileID: 6627143126257082855, guid: c0745e4b78bb35043a8405805b85a7bb,
+    type: 3}
+  horseMillPrefab: {fileID: 5497638912136586550, guid: 30abbdd64b4580143afa50f22417745c,
+    type: 3}
+  waterMillPrefab: {fileID: 5497638912136586550, guid: c02a79c6a2245f24287ba791cafdb51c,
+    type: 3}
   farmPrefab: {fileID: 5497638912136586550, guid: 97888b85fa7fc7644a97f5685559fb95,
     type: 3}
-  settlementPrefab: {fileID: 6627143126257082855, guid: c0745e4b78bb35043a8405805b85a7bb,
+  workshopPrefab: {fileID: 5497638912136586550, guid: 3c48837c36fb59949a56cd17473ca32a,
     type: 3}
   riverParent: {fileID: 368660540}
   riverTilePrefab: {fileID: 5497638912136586550, guid: 8d61226069c29784a879824f60c31518,
     type: 3}
-  farmCount: 0
+  farmData:
+    startingCost: 50
+    currentCost: 50
+    costScaling: 5
+    income: 5
+    power: 0
+    count: 0
+    capacity: 20
+  workshopData:
+    startingCost: 250
+    currentCost: 250
+    costScaling: 25
+    income: 25
+    power: 0
+    count: 0
+    capacity: 5
+  settlementData:
+    startingCost: 200
+    currentCost: 200
+    costScaling: 20
+    income: 0
+    power: 1
+    count: 0
+    capacity: -1
+  horseMillData:
+    startingCost: 1000
+    currentCost: 1000
+    costScaling: 100
+    income: 0
+    power: 10
+    count: 0
+    capacity: -1
+  waterMillData:
+    startingCost: 10000
+    currentCost: 10000
+    costScaling: 1000
+    income: 0
+    power: 100
+    count: 0
+    capacity: -1
 --- !u!4 &392042679
 Transform:
   m_ObjectHideFlags: 0
@@ -870,10 +966,11 @@ MonoBehaviour:
   villageStageManager: {fileID: 392042678}
   powerText: {fileID: 437312962}
   materialsText: {fileID: 1026899098}
-  farmUI: {fileID: 2088017682}
-  farmCountText: {fileID: 1786669775}
-  farmIncomeText: {fileID: 1549652971}
-  farmCostText: {fileID: 1777074883}
+  settlementUI: {fileID: 105225433}
+  horseMillUI: {fileID: 359552490}
+  waterMillUI: {fileID: 1797096648}
+  farmUI: {fileID: 2454519580874062836}
+  workshopUI: {fileID: 236501712}
 --- !u!1001 &429821621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1734,18 +1831,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &1549652971 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7217597700489711816, guid: 70f89c1be67d480479cee66f250c233e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2454519580874062835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1684973403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,30 +1967,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1684973403}
   m_CullTransparentMesh: 1
---- !u!114 &1777074883 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1050914744452720591, guid: 70f89c1be67d480479cee66f250c233e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2454519580874062835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1786669775 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1305893765821497075, guid: 70f89c1be67d480479cee66f250c233e,
-    type: 3}
-  m_PrefabInstance: {fileID: 2454519580874062835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1797096646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1928,6 +1989,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+        type: 3}
+      propertyPath: buildingName
+      value: Water Mill
       objectReference: {fileID: 0}
     - target: {fileID: 7180236373441257428, guid: 70f89c1be67d480479cee66f250c233e,
         type: 3}
@@ -2045,12 +2111,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1797096646}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2088017682 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5130142022999650855, guid: 70f89c1be67d480479cee66f250c233e,
+--- !u!114 &1797096648 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
     type: 3}
-  m_PrefabInstance: {fileID: 2454519580874062835}
+  m_PrefabInstance: {fileID: 1797096646}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fa7be0305cd674e9a4669aa4647934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2088017683 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7180236373441257428, guid: 70f89c1be67d480479cee66f250c233e,
@@ -2074,6 +2146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+        type: 3}
+      propertyPath: buildingName
+      value: Farm
       objectReference: {fileID: 0}
     - target: {fileID: 7180236373441257428, guid: 70f89c1be67d480479cee66f250c233e,
         type: 3}
@@ -2180,6 +2257,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70f89c1be67d480479cee66f250c233e, type: 3}
+--- !u!114 &2454519580874062836 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6142792856412752934, guid: 70f89c1be67d480479cee66f250c233e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2454519580874062835}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9fa7be0305cd674e9a4669aa4647934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

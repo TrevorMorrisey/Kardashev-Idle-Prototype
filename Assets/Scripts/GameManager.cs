@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instace;
     public int currentPower = 0;
     public int currentMaterials = 0;
+    public int currentIncome = 0;
 
     private void Awake()
     {
@@ -17,6 +18,20 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(AddIncome());
+    }
+
+    private IEnumerator AddIncome()
+    {
+        while (true)
+        {
+            currentMaterials += currentIncome;
+            yield return new WaitForSeconds(1);
         }
     }
 
