@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class VillageStageManager : MonoBehaviour
 {
+    public VillageStageUIManager UIManager;
     public Transform cameraTransform;
 
     public Transform buildingParent;
@@ -16,6 +17,8 @@ public class VillageStageManager : MonoBehaviour
     public Dictionary<Vector2Int, TileData> tiles = new Dictionary<Vector2Int, TileData>();
     private List<Vector2Int> availableLandSpawnLocations = new List<Vector2Int>();
     private List<Vector2Int> availableRiverSpawnLocations = new List<Vector2Int>();
+
+    [HideInInspector] public int farmCount;
 
     private void Start()
     {
@@ -54,9 +57,6 @@ public class VillageStageManager : MonoBehaviour
 
             tiles.Add(new Vector2Int(0, i), new TileData(new Vector2Int(0, i), false, true));
             tiles.Add(new Vector2Int(-1, i), new TileData(new Vector2Int(-1, i), false, true));
-
-            //availableRiverSpawnLocations.Add(new Vector2Int(0, i));
-            //availableRiverSpawnLocations.Add(new Vector2Int(-1, i));
         }
 
         int zOffset = 0;
@@ -67,9 +67,6 @@ public class VillageStageManager : MonoBehaviour
 
             tiles.Add(new Vector2Int(zOffset, i), new TileData(new Vector2Int(zOffset, i), false, true));
             tiles.Add(new Vector2Int(zOffset - 1, i), new TileData(new Vector2Int(zOffset - 1, i), false, true));
-
-            //availableRiverSpawnLocations.Add(new Vector2Int(zOffset, i));
-            //availableRiverSpawnLocations.Add(new Vector2Int(zOffset - 1, i));
 
             zOffset += Random.Range(-1, 2);
         }
@@ -83,16 +80,33 @@ public class VillageStageManager : MonoBehaviour
             tiles.Add(new Vector2Int(zOffset, i), new TileData(new Vector2Int(zOffset, i), false, true));
             tiles.Add(new Vector2Int(zOffset - 1, i), new TileData(new Vector2Int(zOffset - 1, i), false, true));
 
-            //availableRiverSpawnLocations.Add(new Vector2Int(zOffset, i));
-            //availableRiverSpawnLocations.Add(new Vector2Int(zOffset - 1, i));
-
             zOffset += Random.Range(-1, 2);
         }
     }
 
+    private void CheckUnlocks() // This should probably be in a separate class
+    {
+        if (GameManager.instace.currentMaterials >= 50) // Should only be checked until it has been unlocked
+        {
+            UIManager.EnableFarmUI();
+        }
+    }
+
+    public void PerformLabor()
+    {
+        GameManager.instace.currentMaterials += 5;
+        UIManager.UpdateMaterialsText(GameManager.instace.currentMaterials);
+
+        CheckUnlocks();
+    }
+
     public void BuyFarm()
     {
-        SpawnFarm();
+        if (GameManager.instace.currentMaterials >= 50)
+        {
+            SpawnFarm();
+            GameManager.instace.currentMaterials -= 50;
+        }
     }
 
     private void SpawnFarm()
