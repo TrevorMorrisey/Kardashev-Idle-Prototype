@@ -589,6 +589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 3092351213556150489}
   requirementText: {fileID: 580033048678654094}
+  buyButton: {fileID: 8045384271077005521}
   costText: {fileID: 2356868994706306825}
   descriptionText: {fileID: 2321647439036779825}
 --- !u!1 &8912741458855454324

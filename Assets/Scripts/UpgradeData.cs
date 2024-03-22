@@ -6,7 +6,7 @@ using UnityEngine;
 public class UpgradeData
 {
     public string upgradeName;
-    public string requirement;
+    public int requirement;
     public int cost;
     public string description;
 
