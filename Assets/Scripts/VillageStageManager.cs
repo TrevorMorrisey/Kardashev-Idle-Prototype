@@ -53,6 +53,8 @@ public class VillageStageManager : MonoBehaviour
         tiles.Add(new Vector2Int(1, -2), new TileData(new Vector2Int(1, -2), false, false));
         tiles.Add(new Vector2Int(2, 0), new TileData(new Vector2Int(2, 0), false, false));
         tiles.Add(new Vector2Int(-2, 0), new TileData(new Vector2Int(-2, 0), false, false));
+        //tiles.Add(new Vector2Int(-2, 1), new TileData(new Vector2Int(-2, 1), false, false));
+        //tiles.Add(new Vector2Int(-2, -1), new TileData(new Vector2Int(-2, -1), false, false));
 
         availableLandSpawnLocations.Add(new Vector2Int(1, 1));
         availableLandSpawnLocations.Add(new Vector2Int(1, 2));
@@ -60,6 +62,8 @@ public class VillageStageManager : MonoBehaviour
         availableLandSpawnLocations.Add(new Vector2Int(1, -2));
         availableLandSpawnLocations.Add(new Vector2Int(2, 0));
         availableLandSpawnLocations.Add(new Vector2Int(-2, 0));
+        //availableLandSpawnLocations.Add(new Vector2Int(-2, 1));
+        //availableLandSpawnLocations.Add(new Vector2Int(-2, -1));
 
         // Set river tile next to village as available spawning location
         availableRiverSpawnLocations.Add(new Vector2Int(0, 0));
@@ -143,10 +147,7 @@ public class VillageStageManager : MonoBehaviour
 
     public void PerformLabor()
     {
-        GameManager.instace.currentMaterials += 5000;
-        //UIManager.UpdateMaterialsText(GameManager.instace.currentMaterials);
-
-        //CheckUnlocks();
+        GameManager.instace.currentMaterials += 500000;
     }
 
     public void ClickPurchaseBuilding(string buildingName)
@@ -189,15 +190,12 @@ public class VillageStageManager : MonoBehaviour
             GameManager.instace.currentPower += buildingData.power;
 
             UIManager.UpdateBuildingUI(buildingUI, buildingData);
-            //CheckUnlocks();
         }
     }
 
     private void SpawnBuilding(string buildingName)
     {
-        // TODO: Handle water mill behavior
-        Vector2Int spawnLocation; // = availableLandSpawnLocations[Random.Range(0, availableLandSpawnLocations.Count)];
-        //availableLandSpawnLocations.Remove(spawnLocation);
+        Vector2Int spawnLocation;
         if (buildingName != "Water Mill")
         {
             spawnLocation = availableLandSpawnLocations[Random.Range(0, availableLandSpawnLocations.Count)];
@@ -241,7 +239,7 @@ public class VillageStageManager : MonoBehaviour
             new Vector2Int(spawnLocation.x, spawnLocation.y + 1),
             new Vector2Int(spawnLocation.x, spawnLocation.y + 2),
             new Vector2Int(spawnLocation.x, spawnLocation.y - 1),
-            new Vector2Int(spawnLocation.x, spawnLocation.y - 2),
+            //new Vector2Int(spawnLocation.x, spawnLocation.y - 2),
             new Vector2Int(spawnLocation.x - 1, spawnLocation.y),
             new Vector2Int(spawnLocation.x + 1, spawnLocation.y)
         };
@@ -264,7 +262,7 @@ public class VillageStageManager : MonoBehaviour
 
     private void ZoomOutCamera()
     {
-        cameraTransform.localPosition -= new Vector3(0f, 0f, 0.1f);
+        cameraTransform.localPosition -= new Vector3(0f, 0f, 0.2f);
     }    
 
 }
