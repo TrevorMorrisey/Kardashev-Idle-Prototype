@@ -12,38 +12,43 @@ public class PurchasePanel : MonoBehaviour
     public Color textActiveColor;
     public Color textInactiveColor;
 
-    public GameObject buildingPanel;
-    public GameObject upgradePanel;
+    public GameObject buildingTab;
+    public GameObject upgradeTab;
 
-    public Image buildingPanelButtonBackground;
-    public Image upgradePanelButtonBackground;
+    public Image buildingTabButtonBackground;
+    public Image upgradeTabButtonBackground;
 
-    public TMP_Text buildingPanelButtonText;
-    public TMP_Text upgradePanelButtonText;
+    public TMP_Text buildingTabButtonText;
+    public TMP_Text upgradeTabButtonText;
 
-    private bool buildingPanelActive = true;
+    private bool buildingTabActive = true;
 
-    public void ClickBuildingPanel()
+    private void Start()
     {
-        buildingPanelActive = true;
         SetUI();
     }
 
-    public void ClickUpgradePanel()
+    public void ClickBuildingTab()
     {
-        buildingPanelActive = false;
+        buildingTabActive = true;
+        SetUI();
+    }
+
+    public void ClickUpgradeTab()
+    {
+        buildingTabActive = false;
         SetUI();
     }
 
     private void SetUI()
     {
-        buildingPanel.SetActive(buildingPanelActive);
-        buildingPanelButtonBackground.color = buildingPanelActive ? backgroundActiveColor : backgroundInactiveColor;
-        buildingPanelButtonText.color = buildingPanelActive ? textActiveColor : textInactiveColor;
+        buildingTab.SetActive(buildingTabActive);
+        buildingTabButtonBackground.color = buildingTabActive ? backgroundActiveColor : backgroundInactiveColor;
+        buildingTabButtonText.color = buildingTabActive ? textActiveColor : textInactiveColor;
 
-        upgradePanel.SetActive(!buildingPanelActive);
-        upgradePanelButtonBackground.color = !buildingPanelActive ? backgroundActiveColor : backgroundInactiveColor;
-        upgradePanelButtonText.color = !buildingPanelActive ? textActiveColor : textInactiveColor;
+        upgradeTab.SetActive(!buildingTabActive);
+        upgradeTabButtonBackground.color = !buildingTabActive ? backgroundActiveColor : backgroundInactiveColor;
+        upgradeTabButtonText.color = !buildingTabActive ? textActiveColor : textInactiveColor;
     }
 
 }
