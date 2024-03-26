@@ -50,7 +50,7 @@ public class VillageStageUIManager : MonoBehaviour
     public void UpdateBuildingUI(BuildingUI buildingUI, BuildingData buildingData)
     {
         buildingUI.SetCount(buildingData.count, buildingData.capacity);
-        buildingUI.SetIncome(buildingData.income, buildingData.power, buildingData.power == 0);
+        buildingUI.SetIncome(buildingData.incomeAmount, buildingData.power, buildingData.power == 0);
         buildingUI.SetCost(buildingData.currentCost);
     }
 

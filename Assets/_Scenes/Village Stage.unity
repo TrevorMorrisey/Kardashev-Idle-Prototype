@@ -1274,15 +1274,17 @@ MonoBehaviour:
     startingCost: 50
     currentCost: 50
     costScaling: 5
-    income: 5
+    incomeAmount: 0
+    incomeTime: 0
     power: 0
     count: 0
-    capacity: 20
+    capacity: 1
   workshopData:
     startingCost: 250
     currentCost: 250
     costScaling: 25
-    income: 25
+    incomeAmount: 0
+    incomeTime: 0
     power: 0
     count: 0
     capacity: 5
@@ -1290,7 +1292,8 @@ MonoBehaviour:
     startingCost: 200
     currentCost: 200
     costScaling: 20
-    income: 0
+    incomeAmount: 0
+    incomeTime: 0
     power: 1
     count: 0
     capacity: -1
@@ -1298,7 +1301,8 @@ MonoBehaviour:
     startingCost: 1000
     currentCost: 1000
     costScaling: 100
-    income: 0
+    incomeAmount: 0
+    incomeTime: 0
     power: 10
     count: 0
     capacity: -1
@@ -1306,7 +1310,8 @@ MonoBehaviour:
     startingCost: 10000
     currentCost: 10000
     costScaling: 1000
-    income: 0
+    incomeAmount: 0
+    incomeTime: 0
     power: 100
     count: 0
     capacity: -1
@@ -1357,36 +1362,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba4b4bc1ab9ca0c4580535ad5b3afb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageManager: {fileID: 392042678}
   upgradeUIPrefab: {fileID: 6815598786586028484, guid: 95139f1edc21fef449fb91823aaeb267,
     type: 3}
   upgradeUIParent: {fileID: 232825154}
-  granaryData:
-    upgradeName: Granaries
-    requirement: 1
-    cost: 5
-    description: New storage techniques make larger harvests worthwhile (farm capacity
-      increased).
-  wheatTaxData:
-    upgradeName: Wheat Tax
-    requirement: 1
-    cost: 15
-    description: Centralization allows for larger scale farming (farm capacity increases).
-  domesticationData:
-    upgradeName: Domestication
-    requirement: 6
-    cost: 30
-    description: Animal labor makes farming dramatically more efficient (farm income
-      increases).
-  irrigationData:
-    upgradeName: Irrigation
-    requirement: 56
-    cost: 60
-    description: Irrigation decreases crop loss and increases output (farm income
-      increases).
-  granaryUnlocked: 0
-  wheatTaxUnlocked: 0
-  domesticationUnlocked: 0
-  irrigationUnlocked: 0
+  farmCapacity1Data:
+    upgradeName: Farm Capacity 1
+    requirement: 0
+    cost: 0
+    description: 
+  farmCapacity2Data:
+    upgradeName: Farm Capacity 2
+    requirement: 0
+    cost: 0
+    description: 
+  farmCapacity3Data:
+    upgradeName: Farm Capacity 3
+    requirement: 0
+    cost: 0
+    description: 
+  farmCapacity4Data:
+    upgradeName: Farm Capacity 4
+    requirement: 0
+    cost: 0
+    description: 
+  farmIncomeAmount1Data:
+    upgradeName: Farm Income Amount 1
+    requirement: 0
+    cost: 0
+    description: 
+  farmIncomeAmount2Data:
+    upgradeName: Farm Income Amount 2
+    requirement: 0
+    cost: 0
+    description: 
+  farmIncomeAmount3Data:
+    upgradeName: Farm Income Amount 3
+    requirement: 0
+    cost: 0
+    description: 
+  farmIncomeTime1Data:
+    upgradeName: Farm Income Time 1
+    requirement: 0
+    cost: 0
+    description: 
+  farmIncomeTime2Data:
+    upgradeName: Farm Income Time 2
+    requirement: 0
+    cost: 0
+    description: 
+  farmCapacity1Unlocked: 0
+  farmCapacity2Unlocked: 0
+  farmCapacity3Unlocked: 0
+  farmCapacity4Unlocked: 0
+  farmIncomeAmount1Unlocked: 0
+  farmIncomeAmount2Unlocked: 0
+  farmIncomeAmount3Unlocked: 0
+  farmIncomeTime1Unlocked: 0
+  farmIncomeTime2Unlocked: 0
 --- !u!1001 &429821621
 PrefabInstance:
   m_ObjectHideFlags: 0

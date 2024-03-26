@@ -186,7 +186,7 @@ public class VillageStageManager : MonoBehaviour
             buildingData.currentCost += buildingData.costScaling * buildingData.count;
 
             // Update income and power in GameManager
-            GameManager.instace.currentIncome += buildingData.income;
+            GameManager.instace.currentIncome += buildingData.incomeAmount;
             GameManager.instace.currentPower += buildingData.power;
 
             UIManager.UpdateBuildingUI(buildingUI, buildingData);

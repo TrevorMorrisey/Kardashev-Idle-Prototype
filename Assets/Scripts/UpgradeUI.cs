@@ -15,7 +15,8 @@ public class UpgradeUI : MonoBehaviour
     public void SetData(UpgradeData data)
     {
         nameText.text = data.upgradeName;
-        requirementText.text = data.requirement.ToString();
+        //requirementText.text = data.requirement.ToString();
+        requirementText.text = ""; // TEMPORARY
         costText.text = "Buy (" + data.cost + "s)";
         descriptionText.text = data.description;
     }
