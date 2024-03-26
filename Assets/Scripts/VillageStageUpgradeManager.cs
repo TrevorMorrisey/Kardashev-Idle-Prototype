@@ -5,6 +5,7 @@ using UnityEngine;
 public class VillageStageUpgradeManager : MonoBehaviour
 {
     public VillageStageManager stageManager;
+    public VillageStageUIManager UIManager;
 
     public GameObject upgradeUIPrefab;
     public Transform upgradeUIParent;
@@ -177,24 +178,28 @@ public class VillageStageUpgradeManager : MonoBehaviour
             farmCapacity1UI.gameObject.SetActive(false);
             farmCapacity1Purchased = true;
             stageManager.farmData.capacity = 2;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
         else if (upgradeName == farmCapacity2Data.upgradeName && GameManager.instace.currentPower >= farmCapacity2Data.requirement)
         {
             farmCapacity2UI.gameObject.SetActive(false);
             farmCapacity2Purchased = true;
             stageManager.farmData.capacity = 5;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
         else if (upgradeName == farmCapacity3Data.upgradeName && GameManager.instace.currentPower >= farmCapacity3Data.requirement)
         {
             farmCapacity3UI.gameObject.SetActive(false);
             farmCapacity3Purchased = true;
             stageManager.farmData.capacity = 10;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
         else if (upgradeName == farmCapacity4Data.upgradeName && GameManager.instace.currentPower >= farmCapacity4Data.requirement)
         {
             farmCapacity4UI.gameObject.SetActive(false);
             farmCapacity4Purchased = true;
             stageManager.farmData.capacity = 20;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
 
         else if (upgradeName == farmIncomeAmount1Data.upgradeName && GameManager.instace.currentPower >= farmIncomeAmount1Data.requirement)
@@ -202,18 +207,21 @@ public class VillageStageUpgradeManager : MonoBehaviour
             farmIncomeAmount1UI.gameObject.SetActive(false);
             farmIncomeAmount1Purchased = true;
             stageManager.farmData.incomeAmount = 2;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
         else if (upgradeName == farmIncomeAmount2Data.upgradeName && GameManager.instace.currentPower >= farmIncomeAmount2Data.requirement)
         {
             farmIncomeAmount2UI.gameObject.SetActive(false);
             farmIncomeAmount2Purchased = true;
             stageManager.farmData.incomeAmount = 4;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
         else if (upgradeName == farmIncomeAmount3Data.upgradeName && GameManager.instace.currentPower >= farmIncomeAmount3Data.requirement)
         {
             farmIncomeAmount3UI.gameObject.SetActive(false);
             farmIncomeAmount3Purchased = true;
             stageManager.farmData.incomeAmount = 8;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
 
         else if (upgradeName == farmIncomeTime1Data.upgradeName && GameManager.instace.currentPower >= farmIncomeTime1Data.requirement)
@@ -221,12 +229,14 @@ public class VillageStageUpgradeManager : MonoBehaviour
             farmIncomeTime1UI.gameObject.SetActive(false);
             farmIncomeTime1Purchased = true;
             stageManager.farmData.incomeTime = 4;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
         else if (upgradeName == farmIncomeTime2Data.upgradeName && GameManager.instace.currentPower >= farmIncomeTime2Data.requirement)
         {
             farmIncomeTime2UI.gameObject.SetActive(false);
             farmIncomeTime2Purchased = true;
             stageManager.farmData.incomeTime = 3;
+            UIManager.UpdateBuildingUI(UIManager.farmUI, stageManager.farmData);
         }
     }
 

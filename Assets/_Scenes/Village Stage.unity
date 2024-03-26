@@ -1363,6 +1363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageManager: {fileID: 392042678}
+  UIManager: {fileID: 392042680}
   upgradeUIPrefab: {fileID: 6815598786586028484, guid: 95139f1edc21fef449fb91823aaeb267,
     type: 3}
   upgradeUIParent: {fileID: 232825154}
@@ -1420,6 +1421,15 @@ MonoBehaviour:
   farmIncomeAmount3Unlocked: 0
   farmIncomeTime1Unlocked: 0
   farmIncomeTime2Unlocked: 0
+  farmCapacity1Purchased: 0
+  farmCapacity2Purchased: 0
+  farmCapacity3Purchased: 0
+  farmCapacity4Purchased: 0
+  farmIncomeAmount1Purchased: 0
+  farmIncomeAmount2Purchased: 0
+  farmIncomeAmount3Purchased: 0
+  farmIncomeTime1Purchased: 0
+  farmIncomeTime2Purchased: 0
 --- !u!1001 &429821621
 PrefabInstance:
   m_ObjectHideFlags: 0
