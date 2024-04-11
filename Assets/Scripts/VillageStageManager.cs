@@ -176,7 +176,7 @@ public class VillageStageManager : MonoBehaviour
 
     public void PurchaseBuilding(string buildingName, BuildingData buildingData, BuildingUI buildingUI)
     {
-        if (GameManager.instace.currentMaterials >= buildingData.currentCost)
+        if (GameManager.instace.currentMaterials >= buildingData.currentCost && buildingData.count < buildingData.capacity)
         {
             SpawnBuilding(buildingName);
             GameManager.instace.currentMaterials -= buildingData.currentCost;
