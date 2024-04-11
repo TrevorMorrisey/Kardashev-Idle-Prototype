@@ -1412,6 +1412,41 @@ MonoBehaviour:
     requirement: 0
     cost: 0
     description: 
+  workshopCapacity1Data:
+    upgradeName: Workshop Capacity 1
+    requirement: 0
+    cost: 0
+    description: 
+  workshopCapacity2Data:
+    upgradeName: Workshop Capacity 2
+    requirement: 0
+    cost: 0
+    description: 
+  workshopIncomeAmount1Data:
+    upgradeName: Workshop Income Amount 1
+    requirement: 0
+    cost: 0
+    description: 
+  workshopIncomeAmount2Data:
+    upgradeName: Workshop Income Amount 2
+    requirement: 0
+    cost: 0
+    description: 
+  workshopIncomeAmount3Data:
+    upgradeName: Workshop Income Amount 3
+    requirement: 0
+    cost: 0
+    description: 
+  workshopIncomeTime1Data:
+    upgradeName: Workshop Income Time 1
+    requirement: 0
+    cost: 0
+    description: 
+  workshopIncomeTime2Data:
+    upgradeName: Workshop Income Time 2
+    requirement: 0
+    cost: 0
+    description: 
   farmCapacity1Unlocked: 0
   farmCapacity2Unlocked: 0
   farmCapacity3Unlocked: 0
@@ -1421,6 +1456,13 @@ MonoBehaviour:
   farmIncomeAmount3Unlocked: 0
   farmIncomeTime1Unlocked: 0
   farmIncomeTime2Unlocked: 0
+  workshopCapacity1Unlocked: 0
+  workshopCapacity2Unlocked: 0
+  workshopIncomeAmount1Unlocked: 0
+  workshopIncomeAmount2Unlocked: 0
+  workshopIncomeAmount3Unlocked: 0
+  workshopIncomeTime1Unlocked: 0
+  workshopIncomeTime2Unlocked: 0
   farmCapacity1Purchased: 0
   farmCapacity2Purchased: 0
   farmCapacity3Purchased: 0
@@ -1430,6 +1472,13 @@ MonoBehaviour:
   farmIncomeAmount3Purchased: 0
   farmIncomeTime1Purchased: 0
   farmIncomeTime2Purchased: 0
+  workshopCapacity1Purchased: 0
+  workshopCapacity2Purchased: 0
+  workshopIncomeAmount1Purchased: 0
+  workshopIncomeAmount2Purchased: 0
+  workshopIncomeAmount3Purchased: 0
+  workshopIncomeTime1Purchased: 0
+  workshopIncomeTime2Purchased: 0
 --- !u!1001 &429821621
 PrefabInstance:
   m_ObjectHideFlags: 0
